@@ -27,7 +27,7 @@ define(["jquery",'template',"cookie"],function($,template){
 // 登录信息
     var loginInfo=$.cookie('loginInfo')&&JSON.parse($.cookie('loginInfo'));
     
-    console.log(loginInfo);
+    // console.log(loginInfo);
 
     if(loginInfo){
      //渲染页面
