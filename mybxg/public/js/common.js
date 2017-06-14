@@ -11,33 +11,41 @@ define(["jquery",'template',"cookie"],function($,template){
             url:'/api/logout',
             dataType:'json',
             success:function(data){
-                    console.log(data);
-                    if(data.code==200){
-                        location.href="/teacher/add";
-                    }   
+                console.log(data);
+                if(data.code==200){
+                    location.href="/teacher/add";
+                }   
             }
         });
         
     });
-        // 登录验证
-        var pathname=location.pathname;
-        if(pathname!='/login'&&!$.cookie('PHPSESSID')){
-         location.href='/login';
-        }
-// 登录信息
+    // 登录验证
+    var pathname=location.pathname;
+    if(pathname!='/login'&&!$.cookie('PHPSESSID')){
+        location.href='/login';
+    }
+    // 登录信息
     var loginInfo=$.cookie('loginInfo')&&JSON.parse($.cookie('loginInfo'));
     
     // console.log(loginInfo);
 
     if(loginInfo){
-     //渲染页面
-     var loginTpl='<div class="avatar img-circle"><img src="{{tc_avatar}}"></div><h4>{{tc_name}}</h4>';
-     var html=template.render(loginTpl,loginInfo);
-     $('#loginInfoTpl').html(html);
-     // $('.aside.profile').find('img').attr('src',loginInfo.tc_avatar);
-     // $('.aside.profile').find('h4').text(loginInfo.tc_name);
+         //渲染页面
+         var loginTpl='<div class="avatar img-circle"><img src="{{tc_avatar}}"></div><h4>{{tc_name}}</h4>';
+         var html=template.render(loginTpl,loginInfo);
+         $('#loginInfoTpl').html(html);
+         // $('.aside.profile').find('img').attr('src',loginInfo.tc_avatar);
+         // $('.aside.profile').find('h4').text(loginInfo.tc_name);
     }
-    })
+
+    //遮罩效果
+    $(document).ajaxStart(function(){
+         $('.overlay').show();
+    });
+    $(document).ajaxStop(function(){
+        $('.overlay').hide();
+    });
+});
 
 
     
