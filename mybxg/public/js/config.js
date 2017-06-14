@@ -6,6 +6,8 @@ requirejs.config({
 		cookie:'jquery-cookie/jquery.cookie',
 		template:'artTemplate/template-web',
 		tealist:'../js/teacher-list',
+		index:'../js/index',
+		util:'../js/util',
 		common:'../js/common',
 		login:'../js/login'
 	},
