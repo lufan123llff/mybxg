@@ -1,5 +1,5 @@
 // 功能模块
-define(["jquery",'template',"cookie"],function($,template){
+define(["jquery",'template',"nprogress","cookie"],function($,template,nprogress){
     // 控制左侧导航折叠
     $('.navs ul').prev('a').on('click', function () {
         $(this).next().slideToggle();
@@ -45,6 +45,9 @@ define(["jquery",'template',"cookie"],function($,template){
     $(document).ajaxStop(function(){
         $('.overlay').hide();
     });
+
+    nprogress.start();
+    nprogress.done();
 });
 
 
